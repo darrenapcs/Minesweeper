@@ -42,14 +42,50 @@ public void draw ()
 public boolean isWon()
 {
 
+    for(int r = 0; r < NUM_ROWS; r ++)
+    {
+        for(int c = 0; c < NUM_COLS; c ++)
+        {
+            if(!bombs.contains(buttons[r][c]) && buttons[r][c].isClicked() == false)
+            {
+              return false;
+            }
+        }
+    }
+
+    return true;
 }
 public void displayLosingMessage()
 {
+        for(int r = 0; r < NUM_ROWS; r ++)
+    {
+        for(int c = 0; c < NUM_COLS; c ++)
+        {
+            if(bombs.contains(buttons[r][c]) && buttons[r][c].isClicked() == true )
+            {
 
+             buttons[10][6].setLabel("Y");
+             buttons[10][7].setLabel("O");
+             buttons[10][8].setLabel("U");
+             buttons[10][10].setLabel("L");
+             buttons[10][11].setLabel("O");
+             buttons[10][12].setLabel("S");
+             buttons[10][13].setLabel("E");
+             noLoop();
+            }
+        }
+    }
 }
 public void displayWinningMessage()
 {
-
+    buttons[10][6].setLabel("Y");
+    buttons[10][7].setLabel("O");
+    buttons[10][8].setLabel("U");
+    buttons[10][10].setLabel("W");
+    buttons[10][11].setLabel("I");
+    buttons[10][12].setLabel("N");
+    buttons[10][13].setLabel("!");
+    noLoop();
 }
 public class MSButton
 {
