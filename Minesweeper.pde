@@ -35,22 +35,53 @@ public void setBombs()
 
 public void draw ()
 {
-    background( 0 );
+  background( 0 );
     if(isWon())
-        displayWinningMessage();
+  displayWinningMessage();
 }
 public boolean isWon()
 {
-    //your code here
-    return false;
+    for (int row = 0; row < NUM_ROWS; row ++)
+  {
+   for (int col = 0; col < NUM_COLS; col++)
+  {
+   if(!bombs.contains(buttons[row][col]) && buttons[row][col].isClicked() == false)
+  {
+  return false;
+ }
+  }
+    }
+    return true;
 }
 public void displayLosingMessage()
 {
     //your code here
+    for(int r = 0; r < NUM_ROWS; r++){
+   for(int c = 0; c < NUM_COLS; c++){
+     buttons[r][c].setLabel("L");
+   }
+    
+}
+for(int r=0; r<buttons.length; r++)
+    {
+    for(int c=0; c<buttons[r].length; c++)
+    {
+   if(bombs.contains(buttons[r][c])&&!buttons[r][c].isClicked())
+     {
+   buttons[r][c].mousePressed();
+     }
+     }
+  }
 }
 public void displayWinningMessage()
 {
     //your code here
+    for(int r = 0; r < NUM_ROWS; r++){
+  for(int c = 0; c < NUM_COLS; c++){
+ buttons[r][c].setLabel("W");
+ }
+ 
+}
 }
 
 public class MSButton
